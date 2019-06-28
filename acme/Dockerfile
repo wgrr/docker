@@ -1,4 +1,4 @@
-FROM debian:buster-slim AS build
+FROM debian:unstable-slim AS build
 
 RUN apt update && apt install -y \
 	git \
@@ -20,7 +20,7 @@ WORKDIR /usr/local/plan9
 RUN git clone https://github.com/9fans/plan9port . \
 	&& ./INSTALL
 
-FROM debian:buster-slim
+FROM debian:unstable-slim
 
 RUN apt-get update && apt-get install -y \
 	git \
@@ -35,10 +35,15 @@ RUN apt-get update && apt-get install -y \
 	libfreetype6 \
 	libfontconfig1 \
 	libexpat1 \
-	libxext6
+	libxext6 \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists
 
-COPY --from=build /usr/local/plan9 /usr/local/plan9
 ENV PATH /usr/local/plan9/bin:$PATH
 ENV PLAN9 /usr/local/plan9
 
-CMD ["acme"]
+COPY --from=build /usr/local/plan9 /usr/local/plan9
+COPY ./acme.rc /usr/loca/bin/acme.rc
+COPY ./gofont/ /usr/local/plan9/font/gofont/
+
+CMD ["acme.rc"]

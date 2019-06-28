@@ -1,0 +1,22 @@
+#!/usr/bin/env rc
+
+. 9.rc
+
+if(! test -r `{namespace}/plumb){
+	echo foo
+}
+
+PAGER=nobs
+MANPAGER=nobs
+TERM=dumb
+
+acmeshell=rc
+shell=rc
+prompt='% '
+
+user=$USER
+font=/usr/local/plan9/font/gofont/GoMedium/10a/font
+
+fn cd { builtin cd $1 && awd $sysname }
+exec acme -f $font $*
+
