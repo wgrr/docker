@@ -3,7 +3,7 @@
 . 9.rc
 
 if(! test -r `{namespace}/plumb){
-	echo foo
+	plumber > /tmp/plumber.log >[2=1] &
 }
 
 PAGER=nobs
