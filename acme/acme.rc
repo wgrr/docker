@@ -2,7 +2,8 @@
 
 . 9.rc
 
-if(! test -r `{namespace}/plumb){
+ns=`{namspace}
+if(! test -r $ns/plumb){
 	plumber > /tmp/plumber.log >[2=1] &
 }
 
@@ -18,5 +19,6 @@ user=$USER
 font=/usr/local/plan9/font/gofont/GoMedium/10a/font
 
 fn cd { builtin cd $1 && awd $sysname }
+
 exec acme -f $font $*
 
