@@ -13,6 +13,7 @@ TERM=dumb
 
 acmeshell=rc
 shell=rc
+SHELL=rc
 prompt='% '
 
 user=$USER
