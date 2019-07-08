@@ -21,5 +21,5 @@ font=/usr/local/plan9/font/gofont/GoMedium/10a/font
 
 fn cd { builtin cd $1 && awd $sysname }
 
-exec acme -f $font $*
+exec acme -a -f $font $*
 
