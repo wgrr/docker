@@ -43,7 +43,7 @@ ENV PATH /usr/local/plan9/bin:$PATH
 ENV PLAN9 /usr/local/plan9
 
 COPY --from=build /usr/local/plan9 /usr/local/plan9
-COPY ./acme.rc /usr/loca/bin/acme.rc
+COPY ./acme.rc /usr/local/bin/acme.rc
 COPY ./gofont/ /usr/local/plan9/font/gofont/
 
 CMD ["acme.rc"]
