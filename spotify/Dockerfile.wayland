@@ -1,0 +1,26 @@
+FROM debian:sid-slim
+ENV HOME /home/wgr
+RUN	groupadd -g 102 wgr \
+	&& useradd --create-home -g 102 -u 101 --home-dir $HOME wgr \
+	&& gpasswd -a wgr audio \
+	&& chown -R wgr:wgr $HOME \
+	&& apt-get update && apt-get install --no-install-recommends -y \
+	dirmngr \
+	gnupg \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4773BD5E130D1D45 \
+	&& echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list \
+	&& apt-get update && apt-get install --no-install-recommends -y \
+	dirmngr \
+	gnupg \
+	alsa-utils \
+	libgl1-mesa-dri \
+	libgl1-mesa-glx \
+	libpulse0 \
+	spotify-client \
+	xdg-utils \
+	&& rm -rf /var/lib/apt/lists/*
+
+WORKDIR $HOME
+USER wgr
+
+ENTRYPOINT	[ "spotify" ]
