@@ -1,0 +1,3 @@
+apparently under Xwayland we need to setup permissions with xhost and both,
+container and host must use the same uid and gid, see Dockerfile
+https://unix.stackexchange.com/questions/330366/how-can-i-run-a-graphical-application-in-a-container-under-wayland

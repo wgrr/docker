@@ -41,4 +41,5 @@ RUN set -eux; apk add --no-cache \
 
 ENV GOPATH=/go
 WORKDIR /
+
 ENTRYPOINT ["/bin/sh"]
