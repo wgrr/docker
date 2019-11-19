@@ -1,0 +1,2 @@
+For unknown reason, pulse is only started when something is playing audio
+(alpine linux, at least) thus make sure to start this container while something has started pulse, otherwise spotify has no sound
