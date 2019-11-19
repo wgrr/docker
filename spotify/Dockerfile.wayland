@@ -1,5 +1,7 @@
 FROM debian:sid-slim
+
 ENV HOME /home/wgr
+
 RUN	groupadd -g 102 wgr \
 	&& useradd --create-home -g 102 -u 101 --home-dir $HOME wgr \
 	&& gpasswd -a wgr audio \
