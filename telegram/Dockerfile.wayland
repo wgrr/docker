@@ -1,0 +1,16 @@
+FROM debian:sid-slim
+
+ENV HOME /home/wgr
+
+RUN	groupadd -g 102 wgr \
+	&& useradd --create-home -g 102 -u 101 --home-dir $HOME wgr \
+	&& gpasswd -a wgr audio \
+	&& chown -R wgr:wgr $HOME \
+	&& apt-get update && apt-get install -y --no-install-recommends telegram-desktop \
+	&& rm -rf /var/lib/apt/lists/*
+
+WORKDIR $HOME
+USER wgr
+
+ENTRYPOINT ["telegram-desktop"]
+
