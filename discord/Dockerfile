@@ -15,13 +15,14 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 	&& ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
 	&& echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get install -y pulseaudio \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
-
 WORKDIR /root
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	wget ca-certificates procps \
+	libgl1-mesa-dri \
+	libgl1-mesa-glx \
+	libalsaplayer0 \
+	alsa-utils \
+	libasound2-data \
 	libasound2 \
 	libatomic1 \
 	libgconf-2-4 \

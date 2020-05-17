@@ -1,9 +1,8 @@
 FROM debian:sid-slim
 
-RUN	apt-get update && apt-get install -y \
+RUN	apt-get update && apt-get install -y --no-install-recommends \
 	dirmngr \
 	gnupg \
-	--no-install-recommends \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4773BD5E130D1D45 \
 	&& echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list \
 	&& apt-get update && apt-get install -y \

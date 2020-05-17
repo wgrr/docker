@@ -8,5 +8,7 @@ docker run -d \
 	-v /dev/snd:/dev/snd  \
 	-v /dev/dri:/dev/dri \
 	-v /dev/input:/dev/input \
+	--net host \
+	--log-opt max-size=5m --log-opt max-file=5 \
 	--name telegram  wgr/telegram
 
